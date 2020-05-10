@@ -1,2 +1,2 @@
 # Visual Speech Recognition: Automated Lip Reading
-## Authors: Utkrisht Rajkumar,
+## Authors: Utkrisht Rajkumar, Subrato Chakravorty
