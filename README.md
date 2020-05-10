@@ -1,2 +1,2 @@
-# VSR_lipread
+# Visual Speech Recognition: Lip Reading
 ## Authors: Utkrisht Rajkumar
