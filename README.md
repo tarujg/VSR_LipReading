@@ -47,6 +47,7 @@ How to train/evaluation script
 
 ## Authors
 
+* **Kaustav Datta** - kdatta@ucsd.edu
 * **Subrato Chakravorty** - suchakra@ucsd.edu
 * **Taruj Goyal** - tgoyal@ucsd.edu
 * **Utkrisht Rajkumar** - urajkuma@ucsd.edu
