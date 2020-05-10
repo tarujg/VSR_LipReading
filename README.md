@@ -34,9 +34,7 @@ How to train/evaluation script
 ## Installation 
 
 1. Install PyTorch - version
-2. Install the patched fonts of powerline nerd-font and/or font-awesome. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for more installation instructions.
-
-3. Installation
+2. Installation
     ```bash
     pip install -r requirements.txt
     ```
