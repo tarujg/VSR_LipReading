@@ -1,9 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.init as init
-import torch.nn.functional as F
 import math
-import numpy as np
 from transformer import TransformerModel
 from dense3D import Dense3D
 
@@ -18,7 +16,7 @@ class LipNet(torch.nn.Module):
 
         if self.isDense:
             #TODO: Add parameters to Dense3D
-            print("Dense Front End")
+            print("Dense3D Front End")
             self.Dense3D = Dense3D()
         else:
             self.conv1 = nn.Conv3d(3, 32, (3, 5, 5), (1, 2, 2), (1, 2, 2))
@@ -136,7 +134,7 @@ class LipNet(torch.nn.Module):
 if __name__ == '__main__':
     (B, C, T, H, W) = (16, 3, 75, 64, 128)
     data = torch.zeros((B, C, T, H, W))
-    net = LipNet()
+    net = LipNet(isTransformer=True, isDense=True)
     # for k, v in net.state_dict().items():
     #     print(k)
     #print(net)
