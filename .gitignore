@@ -1,1 +1,8 @@
 .idea/
+
+LipNet-PyTorch/.*
+LipNet-PyTorch/runs
+LipNet-PyTorch/weights
+LipNet-PyTorch/__pycache__
+LipNet-PyTorch/GRID_align_txt
+LipNet-PyTorch/lip
