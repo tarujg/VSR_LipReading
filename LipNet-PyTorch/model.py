@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.init as init
 import math
-from transformer import TransformerModel
-from dense3D import Dense3D
+from modules.transformer import TransformerModel
+from modules.dense3D import Dense3D
 
 
 
@@ -15,7 +15,6 @@ class LipNet(torch.nn.Module):
         self.printShape = True
 
         if self.isDense:
-            #TODO: Add parameters to Dense3D
             print("Dense3D Front End")
             self.Dense3D = Dense3D()
         else:

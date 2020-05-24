@@ -1,21 +1,16 @@
+import os
+import time
+
+import numpy as np
 import torch
 import torch.nn as nn
-import torch.nn.init as init
-import torch.nn.functional as F
-from torch.utils.data import DataLoader
-import math
-import os
-import sys
-from dataset import MyDataset
-import numpy as np
-import time
-from model import LipNet
 import torch.optim as optim
-import re
-import json
+from dataset import MyDataset
+from model import LipNet
 from tensorboardX import SummaryWriter
+from torch.utils.data import DataLoader
 
-if (__name__ == '__main__'):
+if __name__ == '__main__':
     opt = __import__('options')
     os.environ['CUDA_VISIBLE_DEVICES'] = opt.gpu
     writer = SummaryWriter()
@@ -165,7 +160,7 @@ def train(model, net):
                     exit()
 
 
-if (__name__ == '__main__'):
+if __name__ == '__main__':
     print("Loading options...")
     isTransformer = True
     isDense = True
