@@ -161,7 +161,8 @@ def train(model, net):
                 
 if(__name__ == '__main__'):
     print("Loading options...")
-    model = LipNet()
+    isTransformer = True
+    model = LipNet(isTransformer)
     model = model.cuda()
     net = nn.DataParallel(model).cuda()
 
