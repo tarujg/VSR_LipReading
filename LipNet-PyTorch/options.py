@@ -16,4 +16,11 @@ test_step = 1000
 save_prefix = f'weights/LipNet_{data_type}'
 is_optimize = True
 
-weights = 'pretrain/LipNet_unseen_loss_0.44562849402427673_wer_0.1332580699113564_cer_0.06796452465503355.pt'
+weights = 'weights/LipNet_unseen_baseline_lipnet_loss_0.9452106952667236_wer_0.5736201434050359_cer_0.3231501013032999.pt'
+isTranformer, isDense = False, False
+weights = 'weights/LipNet_unseen_convnet-transformer_loss_1.1085628271102905_wer_0.5145072536268134_cer_0.28163118896891354.pt'
+isTranformer, isDense = True, False
+weights = 'weights/LipNet_unseen_densenet-gru_loss_1.8215723037719727_wer_0.47982324495581125_cer_0.29943257483358493.pt'
+isTranformer, isDense = False, True
+weights = 'weights/LipNet_unseen_densenet-trans_loss_2.021939516067505_wer_0.538519259629815_cer_0.30626728069473974.pt'
+isTranformer, isDense = True, True

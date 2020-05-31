@@ -166,7 +166,7 @@ if __name__ == '__main__':
 
     isTCN = False
     if not isTCN:
-        model = LipNet(isTransformer = True, isDense = True)
+        model = LipNet(isTransformer=opt.isTranformer, isDense=opt.isDense)
     else:
         model = TCNNetwork()
 
