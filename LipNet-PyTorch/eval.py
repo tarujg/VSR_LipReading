@@ -8,6 +8,7 @@ from dataset import MyDataset
 from model import LipNet
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
+from modules.model_tcn import TCNNetwork
 
 if (__name__ == '__main__'):
     opt = __import__('options')
@@ -43,8 +44,12 @@ def eval(model, net):
 
         wer = []
         cer = []
-        tic = time.time()
+        wla = []
+        total_sentences = 0.0
+        correct_sentences = 0.0
+
         for (i_iter, input) in enumerate(loader):
+
             vid = input.get('vid').cuda()
             txt = input.get('txt').cuda()
 
@@ -55,6 +60,14 @@ def eval(model, net):
             truth_txt = [MyDataset.arr2txt(txt[_], start=1) for _ in range(txt.size(0))]
             wer.extend(MyDataset.wer(pred_txt, truth_txt))
             cer.extend(MyDataset.cer(pred_txt, truth_txt))
+            wla.extend(MyDataset.wla(pred_txt, truth_txt))
+
+            batch_correct_sentences, batch_total_sentences = MyDataset.sentences(pred_txt, truth_txt)
+
+            correct_sentences = correct_sentences + batch_correct_sentences
+            total_sentences = total_sentences + batch_total_sentences
+
+            sla = correct_sentences / total_sentences
 
             if (i_iter % opt.display == 0):
 
@@ -64,20 +77,30 @@ def eval(model, net):
                 for (predict, truth) in list(zip(pred_txt, truth_txt))[:10]:
                     print('{:<50}|{:>50}'.format(predict, truth))
                 print(''.join(101 * '-'))
-                print('test_iter={},wer={},cer={}'.format(i_iter, np.array(wer).mean(), np.array(cer).mean()))
+                print('test_iter={}, wer={}, cer={}, wla={} , sla={}'.
+                      format(i_iter, np.array(wer).mean(), np.array(cer).mean(), np.array(wla).mean(), sla))
+
                 print(''.join(101 * '-'))
 
             writer.add_scalar('wer', np.array(wer).mean(), i_iter)
             writer.add_scalar('cer', np.array(cer).mean(), i_iter)
+            writer.add_scalar('wla', np.array(wla).mean(), i_iter)
+            writer.add_scalar('bla', sla, i_iter)
 
-        return np.array(wer).mean(), np.array(cer).mean()
+        return np.array(wer).mean(), np.array(cer).mean(), np.array(wla).mean(), sla
 
 
 if __name__ == '__main__':
     print("Loading options...")
     # load model
-    # model = LipNet(isTransformer=True, isDense=True)
     model = LipNet()
+
+    isTCN = False
+    if not isTCN:
+        model = LipNet(isTransformer=True, isDense=True)
+    else:
+        model = TCNNetwork()
+
     model = model.cuda()
     net = nn.DataParallel(model).cuda()
 
@@ -92,6 +115,6 @@ if __name__ == '__main__':
 
     print("Loaded Model")
     print("Evaluating on test set")
-    (wer, cer) = eval(model, net)
+    (wer, cer, wla, sla) = eval(model, net)
 
-    print('Final Metrics, wer={}, cer={}'.format(wer, cer))
+    print('Final Metrics, wer={}, cer={}, wla={}, sla={}'.format(wer, cer, wla, sla))
