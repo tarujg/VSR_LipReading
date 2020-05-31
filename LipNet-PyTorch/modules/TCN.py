@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 from torch.nn.utils import weight_norm
 
@@ -40,18 +39,18 @@ class TemporalBlock(nn.Module):
             self.downsample.weight.data.normal_(0, 0.01)
 
     def forward(self, inputs):
-        #out = self.net(x)
+        # out = self.net(x)
 
-        #print("input x shape",inputs.shape)
+        # print("input x shape",inputs.shape)
         x = self.dropout1(self.relu1(self.chomp1(self.conv1(inputs))))
-        #print("after 1",x.shape)
+        # print("after 1",x.shape)
         out = self.dropout2(self.relu2(self.chomp2(self.conv2(x))))
-        #print("after 2",x.shape)
+        # print("after 2",x.shape)
 
-        #res = x if self.downsample is None else self.downsample(x)
-        #print("before downsample=",inputs.shape)
+        # res = x if self.downsample is None else self.downsample(x)
+        # print("before downsample=",inputs.shape)
         res = inputs if self.downsample is None else self.downsample(inputs)
-        #print("after downsample=",res.shape)
+        # print("after downsample=",res.shape)
         return self.relu(out + res)
 
 
@@ -62,10 +61,10 @@ class TemporalConvNet(nn.Module):
         num_levels = len(num_channels)
         for i in range(num_levels):
             dilation_size = 2 ** i
-            in_channels = num_inputs if i == 0 else num_channels[i-1]
+            in_channels = num_inputs if i == 0 else num_channels[i - 1]
             out_channels = num_channels[i]
             layers += [TemporalBlock(in_channels, out_channels, kernel_size, stride=1, dilation=dilation_size,
-                                     padding=(kernel_size-1) * dilation_size, dropout=dropout)]
+                                     padding=(kernel_size - 1) * dilation_size, dropout=dropout)]
 
         self.network = nn.Sequential(*layers)
 

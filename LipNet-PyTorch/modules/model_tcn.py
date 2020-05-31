@@ -1,4 +1,3 @@
-# coding: utf-8
 import math
 import torch
 import torch.nn as nn
@@ -90,7 +89,6 @@ class ResNet(nn.Module):
         return x
 
 
-
 class TCNNetwork(nn.Module):
     def __init__(self, mode, inputDim=512, hiddenDim=512, frameLen=75, every_frame=True):
         super(TCNNetwork, self).__init__()
@@ -102,23 +100,23 @@ class TCNNetwork(nn.Module):
         self.nLayers = 2
         # frontend3D
         self.frontend3D = nn.Sequential(
-                nn.Conv3d(3, 64, kernel_size=(5, 7, 7), stride=(1, 2, 2), padding=(2, 3, 3), bias=False),
-                nn.BatchNorm3d(64),
-                nn.ReLU(True),
-                nn.MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1))
-                )
+            nn.Conv3d(3, 64, kernel_size=(5, 7, 7), stride=(1, 2, 2), padding=(2, 3, 3), bias=False),
+            nn.BatchNorm3d(64),
+            nn.ReLU(True),
+            nn.MaxPool3d(kernel_size=(1, 3, 3), stride=(1, 2, 2), padding=(0, 1, 1))
+        )
         # resnet
         self.resnet34 = ResNet(BasicBlock, [3, 4, 6, 3])
 
         dropout = 0.2
-        
-        self.linear = nn.Linear(1024,512)
 
-        self.tcn1 = TemporalConvNet(self.inputDim, [170]*2, kernel_size=3, dropout=dropout)
-        self.tcn2 = TemporalConvNet(self.inputDim, [171]*2, kernel_size=5, dropout=dropout)
-        self.tcn3 = TemporalConvNet(self.inputDim, [171]*2, kernel_size=7, dropout=dropout)
+        self.linear = nn.Linear(1024, 512)
 
-        self.FC = nn.Linear(512, 27+1)
+        self.tcn1 = TemporalConvNet(self.inputDim, [170] * 2, kernel_size=3, dropout=dropout)
+        self.tcn2 = TemporalConvNet(self.inputDim, [171] * 2, kernel_size=5, dropout=dropout)
+        self.tcn3 = TemporalConvNet(self.inputDim, [171] * 2, kernel_size=7, dropout=dropout)
+
+        self.FC = nn.Linear(512, 27 + 1)
 
         # initialize
         self._initialize_weights()
@@ -137,7 +135,7 @@ class TCNNetwork(nn.Module):
         tcn3_output = self.tcn3(x)
         x = torch.cat([tcn1_output, tcn2_output, tcn3_output], 1)
 
-        x = x.permute(0,2,1)
+        x = x.permute(0, 2, 1)
         x = self.FC(x)
 
         return x
@@ -173,7 +171,3 @@ class TCNNetwork(nn.Module):
             elif isinstance(m, nn.BatchNorm1d):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
-
-
-if __name__ == '__main__':
-    model = TCNNetwork()

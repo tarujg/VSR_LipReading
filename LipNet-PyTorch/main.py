@@ -9,6 +9,7 @@ from dataset import MyDataset
 from model import LipNet
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
+from modules.model_tcn import TCNNetwork
 
 if __name__ == '__main__':
     opt = __import__('options')
@@ -162,9 +163,14 @@ def train(model, net):
 
 if __name__ == '__main__':
     print("Loading options...")
-    isTransformer = True
-    isDense = True
-    model = LipNet(isTransformer, isDense)
+
+    isTCN = False
+    if not isTCN:
+        model = LipNet(isTransformer = True, isDense = True)
+    else:
+        model = TCNNetwork()
+
+
     model = model.cuda()
     net = nn.DataParallel(model).cuda()
 
