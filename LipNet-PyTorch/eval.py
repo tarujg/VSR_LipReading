@@ -93,8 +93,6 @@ def eval(model, net):
 if __name__ == '__main__':
     print("Loading options...")
     # load model
-    model = LipNet()
-
     isTCN = False
     if not isTCN:
         model = LipNet(isTransformer=True, isDense=True)
