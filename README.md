@@ -15,6 +15,9 @@ In this project, we experiment with various architectures (e.g. DenseNet+BGRU, D
 - [Description of files](#description)
 
 ## Requirements <a name="requirements"></a>
+* PyTorch 1.0+
+* opencv-python
+* editdistance
 
 ## Preprocessing <a name="preprocessing"></a>
 
