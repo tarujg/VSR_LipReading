@@ -18,6 +18,7 @@ In this project, we experiment with various architectures (e.g. DenseNet+BGRU, D
 * PyTorch 1.0+
 * opencv-python
 * editdistance
+[FILL THIS OUT]
 
 ## Preprocessing <a name="preprocessing"></a>
 
