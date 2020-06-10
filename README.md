@@ -33,11 +33,12 @@ rm GRID_LIP_160x80_TXT.zip
 
 ## How to run  <a name="run"></a>
 
+Please contact urajkuma [at] eng.ucsd.edu for pretrained weights.
+
 [FILL THIS OUT]
 
 ## Description of files  <a name="description"></a>
-
-Please contact urajkuma@eng.ucsd.edu for pretrained weights. 
+ 
 
 file name | Description of file 
 --- | ---
