@@ -12,7 +12,7 @@ In this project, we experiment with various architectures (e.g. DenseNet+BGRU, D
 - [Requirements](#requirements)
 - [Preprorcessing](#preprocessing)
 - [How to run](#run)
-- [Descriptoin of files](#description)
+- [Description of files](#description)
 
 ## Requirements <a name="requirements"></a>
 
