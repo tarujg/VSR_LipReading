@@ -9,14 +9,14 @@ In this project, we experiment with various architectures (e.g. DenseNet+BGRU, D
 
 ## Table of contents
 
-- [Requirements](#req)
-- [Preprorcessing](#preproc)
+- [Requirements](#requirements)
+- [Preprorcessing](#preprocessing)
 - [How to run](#run)
 - [Descriptoin of files](#description)
 
-## Requirements <a name="req"></a>
+## Requirements <a name="requirements"></a>
 
-## Preprocessing
+## Preprocessing <a name="preprocessing"></a>
 
 Link of processed lip images and text: 
 
@@ -31,11 +31,11 @@ unzip GRID_LIP_160x80_TXT.zip
 rm GRID_LIP_160x80_TXT.zip
 ```
 
-## How to run
+## How to run  <a name="run"></a>
 
 [FILL THIS OUT]
 
-## Description of files
+## Description of files  <a name="description"></a>
 
 Please contact urajkuma@eng.ucsd.edu for pretrained weights. 
 
