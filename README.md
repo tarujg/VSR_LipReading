@@ -47,14 +47,20 @@ Please contact urajkuma [at] eng.ucsd.edu for pretrained weights.
 
 file name | Description of file 
 --- | ---
-eval.py | ...
-[FILL OUT THE REST OF THESE THINGS]
+main.py | Primary file to run, that trains the model
+model.py | Builds the model, using the specified front end (STCNN/Dense3D) and backend (Transformer/GRU)
+dataset.py | Creates the dataset from specified paths of the preprocessed images
+options.py | Contains configuration parameters
+eval.py | Evaluates a given model on a specified dataset, outputting the average wer and cer
+eval2.py | Evaluates the wer and cer for a given sentence - given a predicted sentence, and a ground truth alignment file of a sentence from the GRID corpus
+cvtransforms.py | Computes transformations on the data - horizontal flipping and color normalisation
+
 
 ------------------------------------------------------------------------
 
-folder name | Description of file 
+folder name | Description
 --- | ---
-modules | ...
-data | ...
-scripts | ...
-[FILL THIS OUT]
+modules | Contains model architectures for Dense3d, Transformer, and TCN
+data | Contains paths to image folders for both overlap and unseen datasets (with both full data as well as a subset)
+scripts | Contains a dataset download script download_gridcorpus.sh, and preprocessing scripts for face and lip extraction
+
