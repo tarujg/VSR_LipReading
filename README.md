@@ -19,7 +19,6 @@ In this project, we experiment with various architectures (e.g. DenseNet+BGRU, D
 * opencv-python
 * editdistance
 
-[FILL THIS OUT]
 
 ## Preprocessing <a name="preprocessing"></a>
 
