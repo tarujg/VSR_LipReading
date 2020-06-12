@@ -1,3 +1,8 @@
+
+"""
+Authors: Utkrisht Rajkumar, Subrato Chakravorty, Taruj Goyal, Kaustav Datta
+"""
+
 import os
 import time
 

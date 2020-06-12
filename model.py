@@ -1,3 +1,8 @@
+
+"""
+Adapted from LipNet (https://github.com/Fengdalu/LipNet-PyTorch)
+"""
+
 import torch
 import torch.nn as nn
 import torch.nn.init as init

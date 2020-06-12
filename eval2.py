@@ -1,3 +1,9 @@
+
+"""
+Authors: Utkrisht Rajkumar, Subrato Chakravorty, Taruj Goyal, Kaustav Datta
+"""
+
+
 import editdistance
 
 def wer(predict, truth):        

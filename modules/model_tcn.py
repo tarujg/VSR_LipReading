@@ -1,3 +1,8 @@
+
+"""
+Authors: Utkrisht Rajkumar, Subrato Chakravorty, Taruj Goyal, Kaustav Datta
+"""
+
 # coding: utf-8
 import math
 import numpy as np
@@ -93,10 +98,9 @@ class ResNet(nn.Module):
 
 
 
-class Lipreading(nn.Module):
-    def __init__(self, mode, inputDim=512, hiddenDim=512, nClasses=500, frameLen=75, every_frame=True):
+class TCNNetwork(nn.Module):
+    def __init__(self, inputDim=512, hiddenDim=512, nClasses=500, frameLen=75, every_frame=True):
         super(Lipreading, self).__init__()
-        self.mode = mode
         self.inputDim = inputDim
         self.hiddenDim = hiddenDim
         self.nClasses = nClasses

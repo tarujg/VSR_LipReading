@@ -1,3 +1,8 @@
+
+"""
+Authors: Utkrisht Rajkumar, Subrato Chakravorty, Taruj Goyal, Kaustav Datta
+"""
+
 import torch
 import torch.nn as nn
 from torch.nn.utils import weight_norm

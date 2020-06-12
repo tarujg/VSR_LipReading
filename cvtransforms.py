@@ -1,4 +1,10 @@
 # coding: utf-8
+
+"""
+Authors: LipNet (https://github.com/Fengdalu/LipNet-PyTorch)
+"""
+
+
 import random
 import cv2
 import numpy as np

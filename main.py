@@ -1,3 +1,8 @@
+
+"""
+Adapted from LipNet (https://github.com/Fengdalu/LipNet-PyTorch)
+"""
+
 import os
 import time
 
@@ -7,7 +12,7 @@ import torch.nn as nn
 import torch.optim as optim
 from dataset import MyDataset
 from model import LipNet
-from model_tcn import Lipreading
+from model_tcn import TCNNetwork
 from tensorboardX import SummaryWriter
 from torch.utils.data import DataLoader
 
@@ -166,8 +171,7 @@ if __name__ == '__main__':
     isTransformer = False
     isDense = False
     model = LipNet(isTransformer, isDense)
-#     importing tcn lipreading 
-#     model = Lipreading("")
+    #model = TCNNetwork()
     model = model.cuda()
     net = nn.DataParallel(model).cuda()
     num_parameters = sum([p.numel() for p in model.parameters() if p.requires_grad])

@@ -1,4 +1,9 @@
 # encoding: utf-8
+
+"""
+Authors: LipNet (https://github.com/Fengdalu/LipNet-PyTorch)
+"""
+
 import numpy as np
 import glob
 import time
