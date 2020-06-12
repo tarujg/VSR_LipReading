@@ -40,7 +40,14 @@ rm GRID_LIP_160x80_TXT.zip
 
 Please contact urajkuma [at] eng.ucsd.edu for pretrained weights.
 
-[FILL THIS OUT]
+Depending upon the type of frontend and backend you want to use, change the ```isDense``` and ```isTransformer``` parameter in main.py. Frontend will be DenseNet3D if ```isDense``` is ```True``` otherwise, ```STCNN``` is used. Similary, if ```isTransformer``` is ```True```, model will have a transformer backend else BiGRU is used.  
+
+For example, to train a DenseNet3D + Transformer model on GRID Corpus.
+set ```isDense=True``` and ```isTransformer=True```, and then run
+```
+python main.py
+```
+
 
 ## Description of files  <a name="description"></a>
  
