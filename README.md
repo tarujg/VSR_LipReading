@@ -51,10 +51,10 @@ python main.py
 ## Description of files  <a name="description"></a>
  
 
-file name | Description of file 
+file name | Description 
 --- | ---
-main.py | Primary file to run, that trains the model
-model.py | Builds the model, using the specified front end (STCNN/Dense3D) and backend (Transformer/GRU)
+main.py | Primary file to run and train the models
+model.py | Builds the model using the specified front end (STCNN/Dense3D) and backend (Transformer/GRU)
 dataset.py | Creates the dataset from specified paths of the preprocessed images
 options.py | Contains configuration parameters
 eval.py | Evaluates a given model on a specified dataset, outputting the average wer and cer
